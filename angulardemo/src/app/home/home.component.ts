@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertaService } from '../alerta.service';
 import { User } from '../models/user';
+
+const HEROES = [
+  {id: 1, name:"Superman"},
+  {id: 2, name:"Batman"},
+  {id: 3, name:"BatGirl"},
+  {id: 4, name: "Robin"},
+  {id: 5, name:"SuperWoman"},
+];
 
 @Component({
   selector: 'app-home',
@@ -10,6 +19,9 @@ import { User } from '../models/user';
 })
 export class HomeComponent implements OnInit {
   title: string = 'Componenta Home';
+  salut: string = 'Bine ati venit la cursul 2'
+  nume: string = 'LinkAcademy'
+  eroi = HEROES;
   user: User = {
     id: 1,
     nume: 'Popescu',
@@ -20,9 +32,10 @@ export class HomeComponent implements OnInit {
 
   showImage: boolean = true;
 
-  constructor() { }
+  constructor(private alertaServices:AlertaService) { }
 
   ngOnInit(): void {
+    this.alertaServices.showAlert( "Salut Mihai")
   }
   afiseazaImagine() {
     this.showImage = !this.showImage;
